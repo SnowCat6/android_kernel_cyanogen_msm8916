@@ -109,10 +109,10 @@
 		qcom,gpio-req-tbl-num = <0 1 2 3 4>;
 		qcom,gpio-req-tbl-flags = <1 0 0 0 0>;
 		qcom,gpio-req-tbl-label = "CAMIF_MCLK0",
-			"CAM_VANA",
-			"CAM_VDIG",
-			"CAM_RESET1",
-			"CAM_STANDBY";
+			"MCAM_VANA",
+			"MCAM_VDIG",
+			"MCAM_RESET",
+			"MCAM_STANDBY";
 
 		qcom,cam-power-seq-type = "sensor_vreg",
 			"sensor_gpio",
