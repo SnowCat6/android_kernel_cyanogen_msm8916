@@ -14,10 +14,10 @@
 
 #include "msm8939.dtsi"
 #include "D50/msm8939-qrd-skuk-D50.dtsi"
-#include "dsi-panel-nt35596-1080p-skuk-video.dtsi"
-#include "D50/dsi-panel-boe_5inch_nt35532_1080p_video.dtsi"
 #include "D50/dsi-panel-tdi_5inch_nt35596_1080p_video.dtsi"
+#include "D50/dsi-panel-boe_5inch_nt35532_1080p_video.dtsi"
 #include "D50/dsi-panel-trust_5inch_nt35596_1080p_video.dtsi"
+#include "dsi-panel-nt35596-1080p-skuk-video.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. MSM8939 QRD SKUK";
