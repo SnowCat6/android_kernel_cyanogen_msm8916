@@ -241,7 +241,7 @@
 		qcom,gpio-af-pwdm = <5>;
 		qcom,gpio-req-tbl-num = <0 1 2 3 4 5>;
 		qcom,gpio-req-tbl-flags = <1 0 0 0 0 0>;
-		qcom,gpio-req-tbl-label = "CAMIF_MCLK0", "CAM_VANA", "CAM_VDIG", "MCAM_RESET", "MCAM_STANDBY","MCAM_AF_PWDM";
+		qcom,gpio-req-tbl-label = "CAMIF_MCLK", "CAM_VANA", "CAM_VDIG", "MCAM_RESET", "MCAM_STANDBY","MCAM_AF_PWDM";
 		qcom,sensor-position = <0>;
 		qcom,sensor-mode = <0>;
 		qcom,cci-master = <0>;
