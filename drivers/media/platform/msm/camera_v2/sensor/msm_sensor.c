@@ -477,6 +477,7 @@ int msm_sensor_power_up(struct msm_sensor_ctrl_t *s_ctrl)
 			sensor_i2c_client, slave_info, sensor_name);
 		return -EINVAL;
 	}
+printk("SnowCat: sensor name %s\n", sensor_name);
 
 	if (s_ctrl->set_mclk_23880000)
 		msm_sensor_adjust_mclk(power_info);

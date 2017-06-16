@@ -21,7 +21,7 @@
 /*#define CONFIG_MSM_CAMERA_DT_DEBUG*/
 
 #undef CDBG
-#define CDBG(fmt, args...) pr_debug(fmt, ##args)
+#define CDBG(fmt, args...) printk(fmt, ##args)
 
 int msm_camera_fill_vreg_params(struct camera_vreg_t *cam_vreg,
 	int num_vreg, struct msm_sensor_power_setting *power_setting,
@@ -1307,26 +1307,29 @@ int msm_camera_power_up(struct msm_camera_power_ctrl_t *ctrl,
 			break;
 		case SENSOR_GPIO:
 			if (no_gpio) {
-				pr_err("%s: request gpio failed\n", __func__);
+				CDBG("%s: request gpio failed\n", __func__);
 				return no_gpio;
 			}
 			if (power_setting->seq_val >= SENSOR_GPIO_MAX ||
 				!ctrl->gpio_conf->gpio_num_info) {
-				pr_err("%s gpio index %d >= max %d\n", __func__,
+				CDBG("%s SENSOR_GPIO index %d >= max %d\n", __func__,
 					power_setting->seq_val,
 					SENSOR_GPIO_MAX);
 				goto power_up_failed;
 			}
 			if (!ctrl->gpio_conf->gpio_num_info->valid
-				[power_setting->seq_val])
-				continue;
-			CDBG("%s:%d gpio set val %d\n", __func__, __LINE__,
-				ctrl->gpio_conf->gpio_num_info->gpio_num
-				[power_setting->seq_val]);
+				[power_setting->seq_val]){
+				CDBG("%s:%d SENSOR_GPIO NOT VALID index:%d seq_val:%d set val:%d\n", __func__, __LINE__,
+					index, power_setting->seq_val,
+					ctrl->gpio_conf->gpio_num_info->gpio_num[power_setting->seq_val]);
+					continue;
+			}
+			CDBG("%s:%d SENSOR_GPIO index:%d seq_val:%d set val:%d\n", __func__, __LINE__,
+				index, power_setting->seq_val,
+				ctrl->gpio_conf->gpio_num_info->gpio_num[power_setting->seq_val]);
 			gpio_set_value_cansleep(
 				ctrl->gpio_conf->gpio_num_info->gpio_num
-				[power_setting->seq_val],
-				(int) power_setting->config_val);
+				[power_setting->seq_val],(int) power_setting->config_val);
 			break;
 		case SENSOR_VREG:
 			if (power_setting->seq_val >= CAM_VREG_MAX) {
